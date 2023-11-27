@@ -1,0 +1,38 @@
+WsConfig:
+  IP: 127.0.0.1
+  Port: 9999
+
+RedisConfig:
+  IP: 106.54.9.19
+  Port: 6379
+  Network: tcp
+  Password: biaoge666
+  DB: 0
+
+MysqlConfig:
+  # 数据库
+  DSN: "root:biaoge666@tcp(localhost:3306)/test_go_connect?charset=utf8mb4"
+
+PulsarConfig:
+  # 主题
+  Topic: my-topic
+  # 订阅者
+  SubscriptionName: my-sub
+  # 订阅地址
+  BrokerURL: pulsar://60.204.241.30:6650
+
+ElasticConfig:
+  Host: 106.54.9.19
+  Port: 9200
+
+NsqdConfig:
+  Host: 60.204.241.30
+  Port: 4150
+  Topic: topic1
+  Channel: channel
+  Channel2: channel2
+
+KafkaConfig:
+  Host: 60.204.241.30
+  Port: 9092
+

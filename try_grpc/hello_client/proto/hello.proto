@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = ".;service";
+
+message HelloRequest {
+  string Name = 1;
+  int64 Age = 2;
+  repeated string Friend = 3;
+  Person person = 4;
+  message Person{
+    string Name = 1;
+    int64 Age = 2;
+    repeated string Friend = 3;
+  }
+}
+
+service HelloService {
+  rpc SayHello (HelloRequest) returns (HelloResponse);
+}
+
+message HelloResponse {
+  string ResponseMsg = 3;
+  string Greet = 1;
+  int64 Age = 2;
+}

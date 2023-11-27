@@ -34,6 +34,7 @@ func (p *proxyImage) Display() {
 		p.RealImage.LoadImage()
 	}
 	p.RealImage.Display()
+
 }
 
 func TestRealImg(t *testing.T) {

@@ -17,6 +17,7 @@ func main() {
 	c.Set("key3", "value3", 12*time.Second)
 	c.Delete("key3")
 	for key, item := range c.Items() {
+		fmt.Printf("Key: %s, Value: %s\n", key, item.Object)
 		fmt.Printf("Key: %s, Expiration: %d\n", key, item.Expiration)
 	}
 }

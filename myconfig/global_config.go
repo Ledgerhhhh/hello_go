@@ -10,6 +10,16 @@ type GlobalConfig struct {
 	ElasticConfig ElasticConfig
 	NsqdConfig    NsqdConfig
 	KafkaConfig   KafkaConfig
+	MongoDBConfig MongoDBConfig
+}
+
+type MongoDBConfig struct {
+	Host       string
+	Username   string
+	Port       int
+	Password   string
+	DataBase   string
+	Collection string
 }
 
 type KafkaConfig struct {
@@ -46,9 +56,10 @@ type ElasticConfig struct {
 }
 
 type NsqdConfig struct {
-	Host     string
-	Port     int
-	Topic    string
-	Channel  string
-	Channel2 string
+	Host       string
+	Port       int
+	Topic      string
+	AuthSecret string
+	Channel    string
+	Channel2   string
 }

@@ -31,8 +31,17 @@ NsqdConfig:
   Topic: topic1
   Channel: channel
   Channel2: channel2
+  AuthSecret: jV22WdmaXxHWAiAh
 
 KafkaConfig:
   Host: 60.204.241.30
   Port: 9092
 
+
+MongoDBConfig:
+  Host: 60.204.241.30
+  Username: admin
+  Port: 27017
+  Password: biaoge666
+  DataBase: test
+  Collection: test

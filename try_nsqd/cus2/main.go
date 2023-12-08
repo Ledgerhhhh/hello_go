@@ -24,6 +24,7 @@ func (h *MyHandler) HandleMessage(message *nsq.Message) error {
 }
 func main() {
 	config := nsq.NewConfig()
+	config.AuthSecret = myconfig.GConfig.NsqdConfig.AuthSecret
 	consumer, err := nsq.NewConsumer(myconfig.GConfig.NsqdConfig.Topic, myconfig.GConfig.NsqdConfig.Channel, config)
 	if err != nil {
 		fmt.Println("err", err)

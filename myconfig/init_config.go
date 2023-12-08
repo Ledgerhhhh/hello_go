@@ -12,7 +12,7 @@ func InitGConfig() error {
 	vconfig := viper.New()
 	// 设置配置文件的路径
 	vconfig.SetConfigName("config")
-	vconfig.AddConfigPath("../..")
+	vconfig.AddConfigPath(".")
 	vconfig.SetConfigType("yaml")
 	// 读取配置文件
 	err := vconfig.ReadInConfig()

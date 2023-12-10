@@ -23,7 +23,7 @@ type TokenResult struct {
 }
 
 func (receiver *TTSService) CreateToken() *TokenResult {
-	client, err := sdk.NewClientWithAccessKey("cn-shanghai", "LTAI5tFj1BR4xH9nmgrniZYd", "xnWxmsA5vvveSB9JE0rZSZR3elftKU")
+	client, err := sdk.NewClientWithAccessKey("cn-shanghai", "", "")
 	if err != nil {
 		panic(err)
 	}

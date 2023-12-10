@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "/protocol";
+
+package Ledger.Hello;
+
+import "Result.proto";
+
+// protoc --go_out=. --go-grpc_out=. --proto_path=proto proto/Hello.proto
+service Greeter {
+  // 说你好
+  rpc SayHello (HelloRequest) returns (HelloResponse);
+  // 说拜拜
+  rpc SayBye (ByeRequest) returns (ByeResponse);
+  // 返回固定的结果
+  rpc Return(Result.ResultInfo) returns(Result.ResultResponse);
+}
+message ByeResponse{
+  string name = 1;
+  int32 age = 2;
+  bool is_student = 3;
+  repeated string hobbies = 4;
+  Address address = 5;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+}
+message ByeRequest{
+  string name = 1;
+}
+message HelloRequest{
+  string name = 1;
+}
+message HelloResponse{
+  string greeting = 1;
+}

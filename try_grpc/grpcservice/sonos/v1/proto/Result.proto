@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "/protocol";
+
+package Ledger.Result;
+//protoc --go_out=. --go-grpc_out=. --proto_path=proto proto/Result.proto
+// 返回输出对象
+message ResultResponse{
+  ResultInfo Result = 1;
+}
+message ResultInfo {
+  string Code = 1;
+  string Message = 2;
+}
+// 返回对象

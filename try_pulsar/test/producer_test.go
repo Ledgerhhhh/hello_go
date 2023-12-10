@@ -12,7 +12,7 @@ import (
 func init() {
 	err := myconfig.InitGConfig()
 	if err != nil {
-		_ = fmt.Errorf("service error: %s\n", err)
+		_ = fmt.Errorf("ttl_service error: %s\n", err)
 	}
 }
 

@@ -10,11 +10,11 @@ import (
 func init() {
 	err := myconfig.InitGConfig()
 	if err != nil {
-		_ = fmt.Errorf("service error: %s\n", err)
+		_ = fmt.Errorf("ttl_service error: %s\n", err)
 	}
 	err = client.InitEsClient()
 	if err != nil {
-		_ = fmt.Errorf("service error: %s\n", err)
+		_ = fmt.Errorf("ttl_service error: %s\n", err)
 	}
 }
 
@@ -43,7 +43,7 @@ func TestInsertDoc() {
 	}
 	err := util.InsertDocument("test", u)
 	if err != nil {
-		fmt.Printf("service error: %s\n", err)
+		fmt.Printf("ttl_service error: %s\n", err)
 	} else {
 		fmt.Println("success")
 	}
@@ -59,7 +59,7 @@ func TestSearchDocuments() {
 	//var u User
 	res, err := util.SearchDocuments("test", query)
 	if err != nil {
-		fmt.Printf("service error: %s\n", err)
+		fmt.Printf("ttl_service error: %s\n", err)
 		return
 	}
 	fmt.Println(res, "==========")
@@ -73,7 +73,7 @@ func TestUpdateDocument() {
 	}
 	err := util.UpdateDocument("test", "0b5bvosBs52i_6ADphrD", user)
 	if err != nil {
-		fmt.Printf("service error: %s\n", err)
+		fmt.Printf("ttl_service error: %s\n", err)
 	} else {
 		fmt.Println("success")
 	}
@@ -82,7 +82,7 @@ func TestUpdateDocument() {
 func TestDeleteDocument() {
 	err := util.DeleteDocument("test", "SL5SvosBs52i_6ADIRh5")
 	if err != nil {
-		fmt.Printf("service error: %s\n", err)
+		fmt.Printf("ttl_service error: %s\n", err)
 	} else {
 		fmt.Println("success")
 	}
@@ -108,7 +108,7 @@ func TestBulkAddDocuments() {
 	}
 	err := util.BulkAddDocument("test", interfaceSlice)
 	if err != nil {
-		fmt.Printf("service error: %s\n\n", err)
+		fmt.Printf("ttl_service error: %s\n\n", err)
 	} else {
 		fmt.Println("success")
 	}

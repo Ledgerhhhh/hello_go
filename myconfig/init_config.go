@@ -17,12 +17,12 @@ func InitGConfig() error {
 	// 读取配置文件
 	err := vconfig.ReadInConfig()
 	if err != nil {
-		_ = fmt.Errorf("service error: %s\n", err)
+		_ = fmt.Errorf("ttl_service error: %s\n", err)
 		return err
 	}
 	err = vconfig.Unmarshal(GConfig)
 	if err != nil {
-		_ = fmt.Errorf("service error: %s\n", err)
+		_ = fmt.Errorf("ttl_service error: %s\n", err)
 		return err
 	}
 	fmt.Println(GConfig)

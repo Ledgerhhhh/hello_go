@@ -17,6 +17,7 @@ func (h HelloGrpc) Return(ctx context.Context, info *protocol.ResultInfo) (*prot
 		},
 	}
 	return p, nil
+
 }
 
 func NewHelloGrpc() *HelloGrpc {

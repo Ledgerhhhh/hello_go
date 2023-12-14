@@ -2,6 +2,8 @@ package main
 
 import (
 	"com.ledger.goproject/myconfig"
+	"com.ledger.goproject/try_nsqd/model"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/nsqio/go-nsq"
@@ -22,8 +24,52 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	protocol := model.Protocol{
+		Header: model.Header{
+			Namespace: "",
+			Name:      "",
+			Version:   nil,
+			MessageID: "",
+		},
+		Payload: model.Payload{
+			AccessToken:              "",
+			DeviceID:                 "",
+			DeviceIDs:                nil,
+			DeviceType:               "",
+			Params:                   nil,
+			Attribute:                "",
+			Value:                    "",
+			Devices:                  nil,
+			DeviceResponseList:       nil,
+			ErrorCode:                "",
+			ErrorMsg:                 "",
+			DiscoveredAppliances:     nil,
+			DiscoveredGroups:         nil,
+			Appliance:                nil,
+			Function:                 "",
+			ColorTemperatureInKelvin: 0,
+			DeltaPercentage:          nil,
+			Brightness:               nil,
+			Attributes:               nil,
+			PreviousState:            nil,
+			DependentServiceName:     "",
+			DetalValue:               nil,
+			DeltValue:                nil,
+			Color:                    nil,
+			AchievedState:            nil,
+			Mode:                     nil,
+			TargetTemperature:        nil,
+			FanSpeed:                 nil,
+			LockState:                "",
+		},
+	}
+	marshal, err := json.Marshal(protocol)
+	if err != nil {
+		return
+	}
 	for i := 0; i < 10; i++ {
-		err = client.Publish(myconfig.GConfig.NsqdConfig.Topic, []byte("hello world"))
+		err = client.Publish(myconfig.GConfig.NsqdConfig.Topic, marshal)
 		if err != nil {
 			fmt.Println("err:", err)
 			return

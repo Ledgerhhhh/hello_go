@@ -27,8 +27,8 @@ ElasticConfig:
 
 NsqdConfig:
   Host: 60.204.241.30
-  Port: 4150
-  Topic: topic1
+  Port: 14150
+  Topic: XDControl
   Channel: channel
   Channel2: channel2
   AuthSecret: jV22WdmaXxHWAiAh

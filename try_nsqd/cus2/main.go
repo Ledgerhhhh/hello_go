@@ -4,9 +4,7 @@ import (
 	"com.ledger.goproject/myconfig"
 	"fmt"
 	"github.com/nsqio/go-nsq"
-	"os"
-	"os/signal"
-	"syscall"
+	"time"
 )
 
 func init() {
@@ -24,7 +22,6 @@ func (h *MyHandler) HandleMessage(message *nsq.Message) error {
 }
 func main() {
 	config := nsq.NewConfig()
-	config.AuthSecret = myconfig.GConfig.NsqdConfig.AuthSecret
 	consumer, err := nsq.NewConsumer(myconfig.GConfig.NsqdConfig.Topic, myconfig.GConfig.NsqdConfig.Channel, config)
 	if err != nil {
 		fmt.Println("err", err)
@@ -40,12 +37,9 @@ func main() {
 		fmt.Println("err", err)
 		return
 	}
-	shutdown := make(chan os.Signal)
-	signal.Notify(shutdown, syscall.SIGINT, syscall.SIGTERM)
-	// 等待程序退出信号
-	<-shutdown
 
-	// 停止消费者
-	consumer.Stop()
-	fmt.Println("Shutting down...")
+	for {
+		time.Sleep(3 * time.Second)
+		fmt.Println("sleep")
+	}
 }

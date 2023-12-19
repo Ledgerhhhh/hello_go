@@ -1,11 +1,13 @@
 syntax = "proto3";
 
-option go_package = "/protocol";
+//option go_package = "/protocol";
+option go_package = "/sonos/v1/protocol";
 
 package Ledger.Hello;
 
 import "Result.proto";
 
+// 运行目录是
 // protoc --go_out=. --go-grpc_out=. --proto_path=proto proto/Hello.proto
 service Greeter {
   // 说你好

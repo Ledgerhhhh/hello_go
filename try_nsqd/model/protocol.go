@@ -1,6 +1,5 @@
 package model
 
-// Protocol 天猫协议
 type Protocol struct {
 	Header  Header  `json:"Header"`
 	Payload Payload `json:"Payload"`

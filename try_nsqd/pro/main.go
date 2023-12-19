@@ -24,60 +24,31 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-
-	protocol := model.Protocol{
-		Header: model.Header{
-			Namespace: "",
-			Name:      "",
-			Version:   nil,
-			MessageID: "",
-		},
-		Payload: model.Payload{
-			AccessToken:              "",
-			DeviceID:                 "",
-			DeviceIDs:                nil,
-			DeviceType:               "",
-			Params:                   nil,
-			Attribute:                "",
-			Value:                    "",
-			Devices:                  nil,
-			DeviceResponseList:       nil,
-			ErrorCode:                "",
-			ErrorMsg:                 "",
-			DiscoveredAppliances:     nil,
-			DiscoveredGroups:         nil,
-			Appliance:                nil,
-			Function:                 "",
-			ColorTemperatureInKelvin: 0,
-			DeltaPercentage:          nil,
-			Brightness:               nil,
-			Attributes:               nil,
-			PreviousState:            nil,
-			DependentServiceName:     "",
-			DetalValue:               nil,
-			DeltValue:                nil,
-			Color:                    nil,
-			AchievedState:            nil,
-			Mode:                     nil,
-			TargetTemperature:        nil,
-			FanSpeed:                 nil,
-			LockState:                "",
-		},
+	str := "{\"header\":{\"namespace\":\"DuerOS.ConnectedHome.Control\",\"name\":\"TurnOffRequest\",\"payLoadVersion\":\"1\",\"messageId\":\"ecc9aec5125b406c8f9735ed524b3ea8_DCS-10-54-221-29-2039-1215161009-973649_0#2_0_Smarthome_657c09e249f607.99938971_6ff647b8\"},\"payload\":{\"accessToken\":\"dc660515-9a1e-11ee-95dd-ce47403e70e1\",\"appliance\":{\"applianceTypes\":null,\"applianceId\":\"0202A0000001-3\",\"modelName\":\"\",\"version\":\"\",\"friendlyName\":\"\",\"friendlyDescription\":\"\",\"isReachable\":false,\"actions\":null,\"additionalApplianceDetails\":{\"deviceType\":\"4-002\",\"deviceSubTypeNo\":\"4-002-001\"},\"manufacturerName\":\"\",\"attributes\":null,\"subType\":\"\"},\"detalValue\":null,\"deltValue\":null,\"targetTemperature\":null,\"fanSpeed\":null,\"lockState\":\"\"}}"
+	var protocol model.Protocol
+	err = json.Unmarshal([]byte(str), &protocol)
+	if err != nil {
+		return
 	}
+	fmt.Printf("%+v", protocol)
 	marshal, err := json.Marshal(protocol)
 	if err != nil {
 		return
 	}
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 300; i++ {
 		err = client.Publish(myconfig.GConfig.NsqdConfig.Topic, marshal)
 		if err != nil {
 			fmt.Println("err:", err)
 			return
 		}
 	}
+	fmt.Println("end======================================")
+	fmt.Println("end======================================")
+	fmt.Println("end======================================")
+	fmt.Println("end======================================")
+	fmt.Println("end======================================")
 }
 
-// GetProduceClient 获取一个生产者客户端连接
 func GetProduceClient() (*nsq.Producer, error) {
 	config := nsq.NewConfig()
 	config.AuthSecret = myconfig.GConfig.NsqdConfig.AuthSecret

@@ -18,11 +18,15 @@ type MyHandler struct{}
 
 func (h *MyHandler) HandleMessage(message *nsq.Message) error {
 	fmt.Printf("Received message: %s\n", message.Body)
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
+	fmt.Println()
 	return nil
 }
 func main() {
 	config := nsq.NewConfig()
-	consumer, err := nsq.NewConsumer(myconfig.GConfig.NsqdConfig.Topic, myconfig.GConfig.NsqdConfig.Channel, config)
+	consumer, err := nsq.NewConsumer("XDControl", "Duwi.ThirdPlatform.SmartVoice", config)
 	if err != nil {
 		fmt.Println("err", err)
 		return

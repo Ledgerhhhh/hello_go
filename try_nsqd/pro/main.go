@@ -50,6 +50,7 @@ func main() {
 }
 
 func GetProduceClient() (*nsq.Producer, error) {
+
 	config := nsq.NewConfig()
 
 	config.AuthSecret = myconfig.GConfig.NsqdConfig.AuthSecret

@@ -35,10 +35,8 @@ func main() {
 	if err != nil {
 		return
 	}
-
 	for i := 0; i < 500; i++ {
 		err = client.Publish(myconfig.GConfig.NsqdConfig.Topic, marshal)
-
 		if err != nil {
 			fmt.Println("err:", err)
 			return
